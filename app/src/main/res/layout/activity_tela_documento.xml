@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#141416"
+    tools:context=".TelaDocumento">
+
+
+    <ImageButton
+        android:id="@+id/btTextToSpeech"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#caba54"
+        app:layout_anchorGravity="bottom|center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/fuck_icon_audicao" />
+
+    <ImageButton
+        android:id="@+id/btSalvarDocumento"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#caba54"
+        app:layout_anchorGravity="bottom|right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/fuck_icone_concluir" />
+
+    <EditText
+        android:id="@+id/tvTextoDocumento"
+        android:layout_width="342dp"
+        android:layout_height="457dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="4dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Digitar"
+        android:inputType="textMultiLine"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/btTextToSpeech"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.451" />
+
+    <ImageButton
+        android:id="@+id/btCriarNuvem"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#caba54"
+        app:layout_anchorGravity="start|bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btSalvarDocumento"
+        app:layout_constraintStart_toEndOf="@+id/btTextToSpeech"
+        app:srcCompat="@drawable/fuck_icon_nuvem" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

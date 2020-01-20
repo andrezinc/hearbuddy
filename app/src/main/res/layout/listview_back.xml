@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#303437"
+    android:padding="10dp">
+
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/textViewAlpha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="P"
+            android:textColor="#FFF" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/rl"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/rl"
+        android:text='Nome'
+        android:textColor="#FFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewName"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/rl"
+        android:text="Data: 12-6-2017"
+        android:textColor="#dae7ef"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDate"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/rl"
+        android:text="Hora: 12:3"
+        android:textColor="#dae7ef"
+        android:textSize="15sp" />
+
+</RelativeLayout>
