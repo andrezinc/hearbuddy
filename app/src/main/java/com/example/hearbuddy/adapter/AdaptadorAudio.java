@@ -36,7 +36,6 @@ public class AdaptadorAudio extends RecyclerView.Adapter<AdaptadorAudio.Recordin
     private static final String LOG_TAG = "AdaptadorAudio";
 
     private DbHelper mDatabase;
-    private DisciplinaModel disciplinaRecebida;
 
     AudioModel item;
     Context mContext;
@@ -48,7 +47,6 @@ public class AdaptadorAudio extends RecyclerView.Adapter<AdaptadorAudio.Recordin
         mDatabase = new DbHelper(mContext);
         mDatabase.setOnDatabaseChangedListener(this);
         llm = linearLayoutManager;
-        disciplinaRecebida = disciplinaModel;
     }
 
     @Override
@@ -104,7 +102,7 @@ public class AdaptadorAudio extends RecyclerView.Adapter<AdaptadorAudio.Recordin
                 entrys.add(mContext.getString(R.string.dialog_file_rename));
                 entrys.add(mContext.getString(R.string.dialog_file_delete));
 
-                final CharSequence[] items = entrys.toArray(new CharSequence[entrys.size()]);
+                final CharSequence[] items = entrys.toArray(new CharSequence[0]);
 
 
                 // File delete confirm

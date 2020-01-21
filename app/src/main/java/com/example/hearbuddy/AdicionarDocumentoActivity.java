@@ -21,7 +21,6 @@ public class AdicionarDocumentoActivity extends AppCompatActivity {
     private DocumentoModel documentoAtual;
     private Intent intentDisciplina;
     private EditText editTextoDocumento;
-    private String filePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +30,9 @@ public class AdicionarDocumentoActivity extends AppCompatActivity {
         editTextoDocumento = findViewById(R.id.txtDocumento);
         documentoAtual = (DocumentoModel) getIntent().getSerializableExtra("documentoSelecionado");
         intentDisciplina = getIntent();
-        filePath = intentDisciplina.getStringExtra("pathExterno");
+        String filePath = intentDisciplina.getStringExtra("pathExterno");
 
-        if(filePath!=null){
+        if(filePath !=null){
         try {
             String parsedText="";
             PdfReader reader = new PdfReader(filePath);

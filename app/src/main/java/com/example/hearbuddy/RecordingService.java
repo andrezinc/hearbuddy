@@ -37,12 +37,10 @@ public class RecordingService extends Service {
     private DbHelper mDatabase;
     private DisciplinaModel disciplinaAssociada;
     private long mStartingTimeMillis = 0;
-    private long mElapsedMillis = 0;
     private int mElapsedSeconds = 0;
     private OnTimerChangedListener onTimerChangedListener = null;
     private static final SimpleDateFormat mTimerFormat = new SimpleDateFormat("mm:ss", Locale.getDefault());
 
-    private Timer mTimer = null;
     private TimerTask mIncrementTimerTask = null;
 
     @Override
@@ -122,7 +120,7 @@ public class RecordingService extends Service {
 
     public void stopRecording() {
         mRecorder.stop();
-        mElapsedMillis = (System.currentTimeMillis() - mStartingTimeMillis);
+        long mElapsedMillis = (System.currentTimeMillis() - mStartingTimeMillis);
         mRecorder.release();
         Toast.makeText(this, getString(R.string.toast_recording_finish) + " " + mFilePath, Toast.LENGTH_LONG).show();
 
@@ -144,7 +142,7 @@ public class RecordingService extends Service {
     }
 
     private void startTimer() {
-        mTimer = new Timer();
+        Timer mTimer = new Timer();
         mIncrementTimerTask = new TimerTask() {
             @Override
             public void run() {

@@ -21,7 +21,6 @@ import java.util.ArrayList;
 
 public class AdaptadorLembrete extends ArrayAdapter {
 
-    private Context context;
     private int layoutRes;
     private ArrayList<CronogramaModel> arrayList;
 
@@ -29,7 +28,6 @@ public class AdaptadorLembrete extends ArrayAdapter {
 
     public AdaptadorLembrete(@NonNull Context context, @LayoutRes int resource, @NonNull ArrayList<CronogramaModel> arrayList) {
         super(context, resource, arrayList);
-        this.context=context;
         layoutRes=resource;
         this.arrayList=arrayList;
 

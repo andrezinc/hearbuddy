@@ -30,7 +30,6 @@ public class Documento extends AppCompatActivity {
     private RecyclerView recyclerViewDocumento;
     private AdaptadorDocumento documentoAdapter;
     private List<DocumentoModel> listaDocumentos = new ArrayList<>();
-    private ImageButton arquivoInterno;
 
 
     @Override
@@ -38,7 +37,7 @@ public class Documento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_documento);
         recyclerViewDocumento = findViewById(R.id.recyclerDocumento);
-        arquivoInterno = findViewById(R.id.btArmazenamentoInterno);
+        ImageButton arquivoInterno = findViewById(R.id.btArmazenamentoInterno);
 
         recyclerViewDocumento.addOnItemTouchListener(
                 new RecyclerItemClickListener(getApplicationContext(), recyclerViewDocumento,

@@ -38,7 +38,6 @@ public class GravarFragment extends Fragment {
     private static final String LOG_TAG = GravarFragment.class.getSimpleName();
 
     private  DisciplinaModel disciplinaAtual;
-    private int position;
 
     //Recording controls
     private FloatingActionButton mRecordButton = null;
@@ -78,7 +77,7 @@ public class GravarFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        position = getArguments().getInt(ARG_POSITION);
+        int position = getArguments().getInt(ARG_POSITION);
     }
 
     @Override

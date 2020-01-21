@@ -21,9 +21,7 @@ public class ListaFragment extends Fragment{
     private static final String ARG_POSITION = "position";
     private static final String LOG_TAG = "ListaFragment";
 
-    private int position;
     private AdaptadorAudio mAdaptadorAudio;
-    private DisciplinaModel disciplinaAtual;
 
 
     public static ListaFragment newInstance(int position, DisciplinaModel disciplinaAtual) {
@@ -39,7 +37,7 @@ public class ListaFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        position = getArguments().getInt(ARG_POSITION);
+        int position = getArguments().getInt(ARG_POSITION);
         observer.startWatching();
     }
 
@@ -47,7 +45,7 @@ public class ListaFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_file_viewer, container, false);
 
-        disciplinaAtual = (DisciplinaModel) getArguments().getSerializable(
+        DisciplinaModel disciplinaAtual = (DisciplinaModel) getArguments().getSerializable(
                 "disciplinaAtual");
 
         RecyclerView mRecyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);

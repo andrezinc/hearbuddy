@@ -18,9 +18,6 @@ import java.util.Locale;
 
 public class TelaDocumento extends AppCompatActivity {
     private EditText editDocumento;
-    private ImageButton btCriarNuvem;
-    private ImageButton btTextToSpeech;
-    private ImageButton btSalvarDocumento;
     private DocumentoModel documentoAtual;
     private TextToSpeech textToSpeech;
     private String textoDaNuvem = "";
@@ -30,10 +27,10 @@ public class TelaDocumento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_documento);
         editDocumento = findViewById(R.id.tvTextoDocumento);
+        ImageButton btTextToSpeech = findViewById(R.id.btTextToSpeech);
+        ImageButton btSalvarDocumento = findViewById(R.id.btSalvarDocumento);
         btTextToSpeech = findViewById(R.id.btTextToSpeech);
-        btSalvarDocumento = findViewById(R.id.btSalvarDocumento);
-        btTextToSpeech = findViewById(R.id.btTextToSpeech);
-        btCriarNuvem = findViewById(R.id.btCriarNuvem);
+        ImageButton btCriarNuvem = findViewById(R.id.btCriarNuvem);
 
 
         textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
@@ -89,7 +86,8 @@ public class TelaDocumento extends AppCompatActivity {
             }
         });
 
-        if(textoDaNuvem.length()>1000){btCriarNuvem.setVisibility(View.INVISIBLE);}
+        if(textoDaNuvem.length()>1000){
+            btCriarNuvem.setVisibility(View.INVISIBLE);}
 
 
 

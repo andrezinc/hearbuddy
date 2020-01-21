@@ -38,7 +38,6 @@ public class PlaybackFragment extends DialogFragment{
     private SeekBar mSeekBar = null;
     private FloatingActionButton mPlayButton = null;
     private TextView mCurrentProgressTextView = null;
-    private TextView mFileNameTextView = null;
     private TextView mFileLengthTextView = null;
 
     //stores whether or not the mediaplayer is currently playing audio
@@ -82,7 +81,7 @@ public class PlaybackFragment extends DialogFragment{
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_media_playback, null);
 
-        mFileNameTextView = (TextView) view.findViewById(R.id.file_name_text_view);
+        TextView mFileNameTextView = (TextView) view.findViewById(R.id.file_name_text_view);
         mFileLengthTextView = (TextView) view.findViewById(R.id.file_length_text_view);
         mCurrentProgressTextView = (TextView) view.findViewById(R.id.current_progress_text_view);
 

@@ -19,8 +19,6 @@ public class GravadorAudio extends AppCompatActivity {
 
     private static final String LOG_TAG = GravadorAudio.class.getSimpleName();
 
-    private PagerSlidingTabStrip tabs;
-    private ViewPager pager;
     private DisciplinaModel disciplinaAtual;
 
 
@@ -30,9 +28,9 @@ public class GravadorAudio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hearbuddy_audio);
 
-        pager = (ViewPager) findViewById(R.id.pager);
+        ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(new MyAdapter(getSupportFragmentManager()));
-        tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         tabs.setViewPager(pager);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
