@@ -25,26 +25,21 @@
     <string name="send_to">Send to</string>
 
 
-    <!-- About -->
-    <string name="link">Nosso tcc bem feito</string>
 
-    <!-- Toolbar -->
+
     <string name="sound_recorder">Hearbuddy Recording</string>
     <string name="action_licenses">Licensas</string>
     <string name="action_settings">Settings</string>
     <string name="tab_title_record">Gravador</string>
     <string name="tab_title_saved_recordings">Suas gravaçoes</string>
 
-    <!-- Toasts -->
     <string name="toast_recording_start">Gravaçao iniciada</string>
     <string name="toast_recording_finish">Gravaçao salva para</string>
     <string name="toast_file_delete">Gravaçao deletada com sucesso</string>
     <string name="toast_file_exists">O arquivo %1$s já existe. Selecione outro nome.</string>
 
-    <!-- Notifications -->
     <string name="notification_recording">Gravando...</string>
 
-    <!-- Dialogs -->
     <string name="dialog_title_delete">Deletar</string>
     <string name="dialog_text_delete">Você tem certeza que deseja apagar este arquivo?</string>
     <string name="dialog_title_licenses">Open Source Licenses</string>
@@ -68,7 +63,6 @@
     <string name="record_in_progress">Gravando</string>
 
 
-    <!-- Preferences -->
     <string name="pref_high_quality_key">pref_high_quality</string>
     <string name="pref_high_quality_title">Enable High Quality Recording</string>
     <string name="pref_high_quality_desc">Record in CD Quality</string>
