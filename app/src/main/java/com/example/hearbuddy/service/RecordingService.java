@@ -33,9 +33,7 @@ public class RecordingService extends Service {
     private static final String LOG_TAG = "RecordingService";
     private String mFileName = null;
     private String mFilePath = null;
-
     private MediaRecorder mRecorder = null;
-
     private DbHelper mDatabase;
     private DisciplinaModel disciplinaAssociada;
     private long mStartingTimeMillis = 0;
