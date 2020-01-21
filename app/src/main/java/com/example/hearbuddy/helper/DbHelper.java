@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 import android.util.Log;
 
-import com.example.hearbuddy.model.DisciplinaModel;
 import com.example.hearbuddy.model.AudioModel;
 
 public class DbHelper extends SQLiteOpenHelper {

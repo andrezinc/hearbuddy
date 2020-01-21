@@ -10,17 +10,13 @@ import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
-
-import androidx.core.app.NotificationCompat;
-
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.core.app.NotificationCompat;
 
-import com.example.hearbuddy.R;
 import com.example.hearbuddy.helper.DbHelper;
 import com.example.hearbuddy.model.DisciplinaModel;
-import com.example.hearbuddy.GravadorAudio;
 
 import java.io.File;
 import java.io.IOException;

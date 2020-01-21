@@ -1,6 +1,8 @@
 package com.example.hearbuddy.helper;
+
 import com.example.hearbuddy.model.DisciplinaModel;
 import com.example.hearbuddy.model.DocumentoModel;
+
 import java.util.List;
 
 public interface IDocumentoDAO {

@@ -4,10 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Environment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,18 +12,22 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.text.format.DateUtils;
+
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hearbuddy.R;
+import com.example.hearbuddy.fragments.PlaybackFragment;
 import com.example.hearbuddy.helper.DbHelper;
 import com.example.hearbuddy.helper.listeners.OnDatabaseChangedListener;
 import com.example.hearbuddy.model.AudioModel;
-import com.example.hearbuddy.fragments.PlaybackFragment;
 import com.example.hearbuddy.model.DisciplinaModel;
 
 import java.io.File;
-import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 
 public class AdaptadorAudio extends RecyclerView.Adapter<AdaptadorAudio.RecordingsViewHolder>

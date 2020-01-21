@@ -1,14 +1,13 @@
 package com.example.hearbuddy;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.example.hearbuddy.model.DocumentoModel;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.mordred.wordcloud.WordCloud;
 
 import java.util.HashMap;

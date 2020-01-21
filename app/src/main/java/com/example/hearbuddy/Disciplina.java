@@ -1,22 +1,25 @@
 package com.example.hearbuddy;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+
 import androidx.annotation.NonNull;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import android.view.View;
-import android.widget.AdapterView;
+
 import com.example.hearbuddy.adapter.AdaptadorDisciplina;
 import com.example.hearbuddy.helper.DbHelper;
 import com.example.hearbuddy.helper.DisciplinaDAO;
 import com.example.hearbuddy.helper.RecyclerItemClickListener;
 import com.example.hearbuddy.model.DisciplinaModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;

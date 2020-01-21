@@ -1,17 +1,18 @@
 package com.example.hearbuddy;
+
 import android.content.Intent;
-import com.google.android.material.textfield.TextInputEditText;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-import com.example.hearbuddy.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.hearbuddy.helper.DocumentoDAO;
 import com.example.hearbuddy.model.DisciplinaModel;
 import com.example.hearbuddy.model.DocumentoModel;
+import com.google.android.material.textfield.TextInputEditText;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.parser.PdfTextExtractor;
 

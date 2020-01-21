@@ -1,24 +1,24 @@
 package com.example.hearbuddy;
+
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.ItemTouchHelper;
-
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hearbuddy.adapter.AdaptadorDocumento;
 import com.example.hearbuddy.helper.DocumentoDAO;
+import com.example.hearbuddy.helper.RecyclerItemClickListener;
 import com.example.hearbuddy.model.DisciplinaModel;
 import com.example.hearbuddy.model.DocumentoModel;
-import com.example.hearbuddy.helper.RecyclerItemClickListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nbsp.materialfilepicker.MaterialFilePicker;
 import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 

@@ -5,10 +5,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +14,13 @@ import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
 
 import com.example.hearbuddy.R;
-import com.example.hearbuddy.model.DisciplinaModel;
 import com.example.hearbuddy.RecordingService;
+import com.example.hearbuddy.model.DisciplinaModel;
 import com.melnykov.fab.FloatingActionButton;
 
 import java.io.File;

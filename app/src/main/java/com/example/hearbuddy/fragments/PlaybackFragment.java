@@ -7,9 +7,6 @@ import android.graphics.LightingColorFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.annotation.NonNull;
-import com.melnykov.fab.FloatingActionButton;
-import androidx.fragment.app.DialogFragment;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -17,9 +14,12 @@ import android.view.WindowManager;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 
 import com.example.hearbuddy.R;
 import com.example.hearbuddy.model.AudioModel;
+import com.melnykov.fab.FloatingActionButton;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
