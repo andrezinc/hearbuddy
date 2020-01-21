@@ -35,17 +35,17 @@ public class AdaptadorAudio extends RecyclerView.Adapter<AdaptadorAudio.Recordin
 
     private static final String LOG_TAG = "AdaptadorAudio";
 
-    private DbHelper mDatabase;
+    private final DbHelper mDatabase;
 
-    AudioModel item;
-    Context mContext;
-    LinearLayoutManager llm;
+    private AudioModel item;
+    private Context mContext;
+    private final LinearLayoutManager llm;
 
     public AdaptadorAudio(Context context, LinearLayoutManager linearLayoutManager, DisciplinaModel disciplinaModel) {
         super();
         mContext = context;
         mDatabase = new DbHelper(mContext);
-        mDatabase.setOnDatabaseChangedListener(this);
+        DbHelper.setOnDatabaseChangedListener(this);
         llm = linearLayoutManager;
     }
 
@@ -147,16 +147,16 @@ public class AdaptadorAudio extends RecyclerView.Adapter<AdaptadorAudio.Recordin
     }
 
     public static class RecordingsViewHolder extends RecyclerView.ViewHolder {
-        protected TextView vName;
-        protected TextView vLength;
-        protected TextView vDateAdded;
-        protected View cardView;
+        final TextView vName;
+        final TextView vLength;
+        final TextView vDateAdded;
+        final View cardView;
 
-        public RecordingsViewHolder(View v) {
+        RecordingsViewHolder(View v) {
             super(v);
-            vName = (TextView) v.findViewById(R.id.file_name_text);
-            vLength = (TextView) v.findViewById(R.id.file_length_text);
-            vDateAdded = (TextView) v.findViewById(R.id.file_date_added_text);
+            vName = v.findViewById(R.id.file_name_text);
+            vLength = v.findViewById(R.id.file_length_text);
+            vDateAdded = v.findViewById(R.id.file_date_added_text);
             cardView = v.findViewById(R.id.card_view);
         }
     }
@@ -166,7 +166,7 @@ public class AdaptadorAudio extends RecyclerView.Adapter<AdaptadorAudio.Recordin
         return mDatabase.getCount();
     }
 
-    public AudioModel getItem(int position, String selection) {
+    private AudioModel getItem(int position, String selection) {
        return mDatabase.getItemAt(position, selection);
     }
 
@@ -185,7 +185,7 @@ public class AdaptadorAudio extends RecyclerView.Adapter<AdaptadorAudio.Recordin
 
     }
 
-    public void remove(int position) {
+    private void remove(int position) {
         //remove item from database, recyclerview and storage
 
         //delete file from storage
@@ -200,7 +200,7 @@ public class AdaptadorAudio extends RecyclerView.Adapter<AdaptadorAudio.Recordin
         //user deletes a saved recording out of the application through another application
     }
 
-    public void rename(int position, String name) {
+    private void rename(int position, String name) {
         //rename a file
 
         String mFilePath = Environment.getExternalStorageDirectory().getAbsolutePath();
@@ -223,14 +223,14 @@ public class AdaptadorAudio extends RecyclerView.Adapter<AdaptadorAudio.Recordin
     }
 
 
-    public void renameFileDialog (final int position) {
+    private void renameFileDialog(final int position) {
         // File rename dialog
         AlertDialog.Builder renameFileBuilder = new AlertDialog.Builder(mContext);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(R.layout.dialog_rename_file, null);
 
-        final EditText input = (EditText) view.findViewById(R.id.new_name);
+        final EditText input = view.findViewById(R.id.new_name);
 
         renameFileBuilder.setTitle(mContext.getString(R.string.dialog_title_rename));
         renameFileBuilder.setCancelable(true);
@@ -260,7 +260,7 @@ public class AdaptadorAudio extends RecyclerView.Adapter<AdaptadorAudio.Recordin
         alert.show();
     }
 
-    public void deleteFileDialog (final int position) {
+    private void deleteFileDialog(final int position) {
         // File delete confirm
         AlertDialog.Builder confirmDelete = new AlertDialog.Builder(mContext);
         confirmDelete.setTitle(mContext.getString(R.string.dialog_title_delete));

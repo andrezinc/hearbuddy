@@ -17,7 +17,7 @@ public class AudioModel implements Parcelable {
     {
     }
 
-    public AudioModel(Parcel in) {
+    private AudioModel(Parcel in) {
         idDisciplinaAssociada = disciplinaAssociada.getId();
         mName = in.readString();
         mFilePath = in.readString();
@@ -27,12 +27,13 @@ public class AudioModel implements Parcelable {
         idDisciplinaAssociada = in.readLong();
     }
 
-    public DisciplinaModel getDisciplinaAssociada() {
-        return disciplinaAssociada;
-    }
 
-    public void setDisciplinaAssociada(DisciplinaModel disciplinaAssociada) {
-        this.disciplinaAssociada = disciplinaAssociada;
+   public DisciplinaModel getDisciplinaAssociada() {
+       return disciplinaAssociada;
+  }
+
+  public void setDisciplinaAssociada(DisciplinaModel disciplinaAssociada) {
+       this.disciplinaAssociada = disciplinaAssociada;
     }
 
     public Long getIdDisciplinaAssociada() {

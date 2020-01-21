@@ -13,8 +13,8 @@ import java.util.List;
 
 public class DocumentoDAO implements IDocumentoDAO {
 
-    private SQLiteDatabase read;
-    private SQLiteDatabase write;
+    private final SQLiteDatabase read;
+    private final SQLiteDatabase write;
 
     public DocumentoDAO(Context context) {
         DbHelper db = new DbHelper(context);
@@ -75,6 +75,7 @@ public class DocumentoDAO implements IDocumentoDAO {
             documento.setDisciplinaAssociada(disciplinaRecuperada);
             documentos.add(documento);
         }
+        c.close();
         return documentos;
     }
 }

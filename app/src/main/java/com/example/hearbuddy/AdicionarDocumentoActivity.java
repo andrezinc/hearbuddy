@@ -34,14 +34,14 @@ public class AdicionarDocumentoActivity extends AppCompatActivity {
 
         if(filePath !=null){
         try {
-            String parsedText="";
+            StringBuilder parsedText= new StringBuilder();
             PdfReader reader = new PdfReader(filePath);
             int n = reader.getNumberOfPages();
             for (int i = 0; i <n ; i++) {
-                parsedText   = parsedText+ PdfTextExtractor.getTextFromPage(reader, i+1).trim()+"\n";
+                parsedText.append(PdfTextExtractor.getTextFromPage(reader, i + 1).trim()).append("\n");
             }
 
-            editTextoDocumento.setText(parsedText);
+            editTextoDocumento.setText(parsedText.toString());
 
             reader.close();
         } catch (Exception e) {
@@ -64,50 +64,47 @@ public class AdicionarDocumentoActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch(item.getItemId()){
-            case R.id.itemSalvar:
-                DocumentoDAO documentoDAO = new DocumentoDAO(getApplicationContext());
+        if (item.getItemId() == R.id.itemSalvar) {
+            DocumentoDAO documentoDAO = new DocumentoDAO(getApplicationContext());
 
-                if(documentoAtual!=null){
-                    String nomeDocumento = editDocumento.getText().toString();
-                    String textoDocumento = editTextoDocumento.getText().toString();
-                    if(!nomeDocumento.isEmpty()){
-                        DocumentoModel documento = new DocumentoModel();
-                        documento.setNomeDocumento(nomeDocumento);
-                        documento.setTextoDocumento(textoDocumento);
-                        documento.setId(documentoAtual.getId());
-                        if (documentoDAO.atualizar(documento)){
-                            finish();
-                            Log.i("DabberADD", documento.getTextoDocumento());
-                        }
+            if (documentoAtual != null) {
+                String nomeDocumento = editDocumento.getText().toString();
+                String textoDocumento = editTextoDocumento.getText().toString();
+                if (!nomeDocumento.isEmpty()) {
+                    DocumentoModel documento = new DocumentoModel();
+                    documento.setNomeDocumento(nomeDocumento);
+                    documento.setTextoDocumento(textoDocumento);
+                    documento.setId(documentoAtual.getId());
+                    if (documentoDAO.atualizar(documento)) {
+                        finish();
+                        Log.i("DabberADD", documento.getTextoDocumento());
                     }
                 }
-
-                else{
-                    String nomeDocumento = editDocumento.getText().toString();
-                    String textoDocumento = editTextoDocumento.getText().toString();
-                    if(!nomeDocumento.isEmpty()){
-                        DocumentoModel documento = new DocumentoModel();
-                        DisciplinaModel disciplinaRecuperada = new DisciplinaModel();
-                        disciplinaRecuperada = (DisciplinaModel) intentDisciplina.getSerializableExtra("disciplinaSelecionada");
-                        if(disciplinaRecuperada!=null){
+            } else {
+                String nomeDocumento = editDocumento.getText().toString();
+                String textoDocumento = editTextoDocumento.getText().toString();
+                if (!nomeDocumento.isEmpty()) {
+                    DocumentoModel documento = new DocumentoModel();
+                    DisciplinaModel disciplinaRecuperada = new DisciplinaModel();
+                    disciplinaRecuperada = (DisciplinaModel) intentDisciplina.getSerializableExtra("disciplinaSelecionada");
+                    if (disciplinaRecuperada != null) {
                         documento.setDisciplinaAssociada(disciplinaRecuperada);
                         documento.setNomeDocumento(nomeDocumento);
                         documento.setTextoDocumento(textoDocumento);
                         documento.getDisciplinaAssociada().setId(disciplinaRecuperada.getId());
                         documentoDAO.adicionar(documento);
-                        finish();}
-                        else{
-                            DisciplinaModel disciplinaRecuperadaExt = (DisciplinaModel) intentDisciplina.getSerializableExtra("disciplinaSelecionadaExt");
-                            documento.setDisciplinaAssociada(disciplinaRecuperadaExt);
-                            documento.setNomeDocumento(nomeDocumento);
-                            documento.setTextoDocumento(textoDocumento);
-                            documento.getDisciplinaAssociada().setId(disciplinaRecuperadaExt.getId());
-                            documentoDAO.adicionar(documento);
-                            finish();
-                        }
+                        finish();
+                    } else {
+                        DisciplinaModel disciplinaRecuperadaExt = (DisciplinaModel) intentDisciplina.getSerializableExtra("disciplinaSelecionadaExt");
+                        documento.setDisciplinaAssociada(disciplinaRecuperadaExt);
+                        documento.setNomeDocumento(nomeDocumento);
+                        documento.setTextoDocumento(textoDocumento);
+                        documento.getDisciplinaAssociada().setId(disciplinaRecuperadaExt.getId());
+                        documentoDAO.adicionar(documento);
+                        finish();
                     }
                 }
+            }
         }
         return super.onOptionsItemSelected(item);
     }

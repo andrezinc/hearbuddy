@@ -35,31 +35,29 @@ public class AdicionarDisciplinaActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch(item.getItemId()){
-            case R.id.itemSalvar:
-                DisciplinaDAO disciplinaDAO = new DisciplinaDAO(getApplicationContext());
+        if (item.getItemId() == R.id.itemSalvar) {
+            DisciplinaDAO disciplinaDAO = new DisciplinaDAO(getApplicationContext());
 
-                if(disciplinaAtual!=null){
-                    String nomeDisciplina = editDisciplina.getText().toString();
-                    if(!nomeDisciplina.isEmpty()){
-                        DisciplinaModel disciplina = new DisciplinaModel();
-                        disciplina.setNomeDisciplina(nomeDisciplina);
-                        disciplina.setId(disciplinaAtual.getId());
+            if (disciplinaAtual != null) {
+                String nomeDisciplina = editDisciplina.getText().toString();
+                if (!nomeDisciplina.isEmpty()) {
+                    DisciplinaModel disciplina = new DisciplinaModel();
+                    disciplina.setNomeDisciplina(nomeDisciplina);
+                    disciplina.setId(disciplinaAtual.getId());
 
-                        if (disciplinaDAO.atualizar(disciplina)){
-                            finish();
-                        }
+                    if (disciplinaDAO.atualizar(disciplina)) {
+                        finish();
                     }
                 }
-
-                else{
-                    String nomeDisciplina = editDisciplina.getText().toString();
-                    if(!nomeDisciplina.isEmpty()){
-                        DisciplinaModel disciplina = new DisciplinaModel();
-                        disciplina.setNomeDisciplina(nomeDisciplina);
-                        disciplinaDAO.adicionar(disciplina);
-                        finish();}
+            } else {
+                String nomeDisciplina = editDisciplina.getText().toString();
+                if (!nomeDisciplina.isEmpty()) {
+                    DisciplinaModel disciplina = new DisciplinaModel();
+                    disciplina.setNomeDisciplina(nomeDisciplina);
+                    disciplinaDAO.adicionar(disciplina);
+                    finish();
                 }
+            }
         }
         return super.onOptionsItemSelected(item);
     }

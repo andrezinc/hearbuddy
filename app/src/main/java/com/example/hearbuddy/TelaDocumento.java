@@ -147,7 +147,7 @@ public class TelaDocumento extends AppCompatActivity {
 
 
 
-    public void atualizar(){
+    private void atualizar(){
         DocumentoDAO documentoDAO = new DocumentoDAO(getApplicationContext());
         String textoDocumentox = editDocumento.getText().toString();
         if(!textoDocumentox.isEmpty()) {

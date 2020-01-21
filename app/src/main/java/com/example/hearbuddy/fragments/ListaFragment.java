@@ -16,6 +16,8 @@ import com.example.hearbuddy.R;
 import com.example.hearbuddy.adapter.AdaptadorAudio;
 import com.example.hearbuddy.model.DisciplinaModel;
 
+import java.util.Objects;
+
 
 public class ListaFragment extends Fragment{
     private static final String ARG_POSITION = "position";
@@ -37,7 +39,7 @@ public class ListaFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int position = getArguments().getInt(ARG_POSITION);
+        int position = Objects.requireNonNull(getArguments()).getInt(ARG_POSITION);
         observer.startWatching();
     }
 
@@ -45,10 +47,10 @@ public class ListaFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_file_viewer, container, false);
 
-        DisciplinaModel disciplinaAtual = (DisciplinaModel) getArguments().getSerializable(
+        DisciplinaModel disciplinaAtual = (DisciplinaModel) Objects.requireNonNull(getArguments()).getSerializable(
                 "disciplinaAtual");
 
-        RecyclerView mRecyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+        RecyclerView mRecyclerView = v.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(RecyclerView.VERTICAL);
@@ -65,7 +67,7 @@ public class ListaFragment extends Fragment{
         return v;
     }
 
-    FileObserver observer =
+    private final FileObserver observer =
             new FileObserver(android.os.Environment.getExternalStorageDirectory().toString()
                     + "/HearbuddyRecord") {
                 @Override

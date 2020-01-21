@@ -7,9 +7,11 @@ public class CronogramaModel {
     private int imageRes;
     private Long idCronogramaxDisciplina;
 
-    public Long getIdCronogramaxDisciplina() {
-        return idCronogramaxDisciplina;
-    }
+// --Commented out by Inspection START (21/01/2020 14:51):
+//    public Long getIdCronogramaxDisciplina() {
+//        return idCronogramaxDisciplina;
+//    }
+// --Commented out by Inspection STOP (21/01/2020 14:51)
 
     public void setIdCronogramaxDisciplina(Long idCronogramaxDisciplina) {
         this.idCronogramaxDisciplina = idCronogramaxDisciplina;
@@ -40,10 +42,10 @@ public class CronogramaModel {
     }
 
     public String getTime() {
-        return time;
-    }
+      return time;
+   }
 
-    public void setTime(String time) {
+   public void setTime(String time) {
         this.time = time;
     }
 

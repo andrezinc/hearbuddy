@@ -21,13 +21,13 @@ import java.util.ArrayList;
 public class CronogramaHome extends AppCompatActivity {
 
 
-    ListView listView;
+    private ListView listView;
 
-    AdaptadorLembrete arrayAdapter;
-    ArrayList<CronogramaModel> arrayListRem= new ArrayList<>();
-    ArrayList<Integer> idArrayList= new ArrayList<>();
+    private AdaptadorLembrete arrayAdapter;
+    private final ArrayList<CronogramaModel> arrayListRem= new ArrayList<>();
+    private final ArrayList<Integer> idArrayList= new ArrayList<>();
 
-    boolean flagEditAlarm = false;
+    private boolean flagEditAlarm = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +40,19 @@ public class CronogramaHome extends AppCompatActivity {
 
 
         private void init () {
-            listView = (ListView) findViewById(R.id.listView);
+            listView = findViewById(R.id.listView);
         }
 
-    private void setListeners() {
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-            }
-        });
-    }
+// --Commented out by Inspection START (21/01/2020 14:51):
+//    private void setListeners() {
+//
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+//            }
+//        });
+//    }
+// --Commented out by Inspection STOP (21/01/2020 14:51)
 
     private void fetchDatabaseToArrayList() {
         arrayListRem.clear();
@@ -98,7 +100,7 @@ public class CronogramaHome extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(flagEditAlarm==true) {
+        if(flagEditAlarm) {
             fetchDatabaseToArrayList();
             long id= CronogramaEditar.idUpdate;
 

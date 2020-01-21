@@ -10,16 +10,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.hearbuddy.model.DisciplinaModel;
 
 public class TelaDisciplina extends AppCompatActivity {
-   ImageButton btdoc;
-   ImageButton btcrono;
+   private ImageButton btdoc;
+   private ImageButton btcrono;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_tela_disciplina );
 
-        btdoc= (ImageButton) findViewById(R.id.btdoc);
-        btcrono= (ImageButton) findViewById(R.id.btcrono);
+        btdoc= findViewById(R.id.btdoc);
+        btcrono= findViewById(R.id.btcrono);
 
         btdoc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,7 +30,7 @@ public class TelaDisciplina extends AppCompatActivity {
             private void bt1chamateladoc() {
                 Intent intentDocumento = getIntent();
                 Intent intent = new Intent(TelaDisciplina.this, Documento.class);
-                intent.putExtra("disciplinaSelecionada", (DisciplinaModel) intentDocumento.getSerializableExtra("disciplinaSelecionada"));
+                intent.putExtra("disciplinaSelecionada", intentDocumento.getSerializableExtra("disciplinaSelecionada"));
                 startActivity(intent);
             }
 
@@ -47,7 +47,7 @@ public class TelaDisciplina extends AppCompatActivity {
             private void btcorno() {
                 Intent intentCorno = getIntent();
                 Intent intent = new Intent(TelaDisciplina.this, CronogramaDisciplina.class);
-                intent.putExtra("disciplinaSelecionada", (DisciplinaModel) intentCorno.getSerializableExtra("disciplinaSelecionada"));
+                intent.putExtra("disciplinaSelecionada", intentCorno.getSerializableExtra("disciplinaSelecionada"));
                 startActivity(intent);
 
             }

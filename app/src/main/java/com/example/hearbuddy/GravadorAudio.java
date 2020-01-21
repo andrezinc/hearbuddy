@@ -17,9 +17,9 @@ import com.example.hearbuddy.model.DisciplinaModel;
 
 public class GravadorAudio extends AppCompatActivity {
 
-    private static final String LOG_TAG = GravadorAudio.class.getSimpleName();
+    // --Commented out by Inspection (21/01/2020 14:51):private static final String LOG_TAG = GravadorAudio.class.getSimpleName();
 
-    private DisciplinaModel disciplinaAtual;
+    // --Commented out by Inspection (21/01/2020 14:51):private DisciplinaModel disciplinaAtual;
 
 
 
@@ -28,12 +28,12 @@ public class GravadorAudio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hearbuddy_audio);
 
-        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        ViewPager pager = findViewById(R.id.pager);
         pager.setAdapter(new MyAdapter(getSupportFragmentManager()));
-        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+        PagerSlidingTabStrip tabs = findViewById(R.id.tabs);
         tabs.setViewPager(pager);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setPopupTheme(R.style.ThemeOverlay_AppCompat_Light);
 
        // disciplinaAtual = (DisciplinaModel) getIntent().getSerializableExtra("disciplinaSelecionada");
@@ -44,11 +44,11 @@ public class GravadorAudio extends AppCompatActivity {
     }
 
 
-    public class MyAdapter extends FragmentPagerAdapter {
-        private String[] titles = { getString(R.string.tab_title_record),
+    class MyAdapter extends FragmentPagerAdapter {
+        private final String[] titles = { getString(R.string.tab_title_record),
                 getString(R.string.tab_title_saved_recordings) };
 
-        public MyAdapter(FragmentManager fm) {
+        MyAdapter(FragmentManager fm) {
             super(fm);
         }
 

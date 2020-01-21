@@ -71,7 +71,7 @@ public class Disciplina extends AppCompatActivity {
         });
     }
 
-    public void carregarListaDisciplinas(){
+    private void carregarListaDisciplinas(){
         DisciplinaDAO disciplinaDAO = new DisciplinaDAO(getApplicationContext());
         listaDisciplinas = disciplinaDAO.listarDisciplinas();
         disciplinaAdapter = new AdaptadorDisciplina(listaDisciplinas);
@@ -83,7 +83,7 @@ public class Disciplina extends AppCompatActivity {
         recyclerViewDisciplina.setAdapter(disciplinaAdapter);
     }
 
-    ItemTouchHelper.SimpleCallback itemTouchHelper = new ItemTouchHelper.SimpleCallback(0,
+    private final ItemTouchHelper.SimpleCallback itemTouchHelper = new ItemTouchHelper.SimpleCallback(0,
             ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {

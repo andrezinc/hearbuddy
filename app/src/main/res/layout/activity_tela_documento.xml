@@ -19,7 +19,8 @@
         app:layout_anchorGravity="bottom|center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/fuck_icon_audicao" />
+        app:srcCompat="@drawable/fuck_icon_audicao"
+        android:contentDescription="TODO" />
 
     <ImageButton
         android:id="@+id/btSalvarDocumento"
@@ -32,7 +33,8 @@
         app:layout_anchorGravity="bottom|right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/fuck_icone_concluir" />
+        app:srcCompat="@drawable/fuck_icone_concluir"
+        android:contentDescription="TODO" />
 
     <EditText
         android:id="@+id/tvTextoDocumento"
@@ -52,7 +54,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.451" />
+        app:layout_constraintVertical_bias="0.451"
+        android:autofillHints="" />
 
     <ImageButton
         android:id="@+id/btCriarNuvem"
@@ -67,6 +70,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btSalvarDocumento"
         app:layout_constraintStart_toEndOf="@+id/btTextToSpeech"
-        app:srcCompat="@drawable/fuck_icon_nuvem" />
+        app:srcCompat="@drawable/fuck_icon_nuvem"
+        android:contentDescription="TODO" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

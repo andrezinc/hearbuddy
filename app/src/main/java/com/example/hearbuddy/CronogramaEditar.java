@@ -25,10 +25,13 @@ import java.util.Calendar;
 
 
 public class CronogramaEditar extends AppCompatActivity {
-    Button buttonDate, buttonTime;
-    EditText editTextAbout;
-    ImageButton imageButtonAdd;
-    String timeET,dateET,todoET;
+    private Button buttonDate;
+    private Button buttonTime;
+    private EditText editTextAbout;
+    private ImageButton imageButtonAdd;
+    private String timeET;
+    private String dateET;
+    private String todoET;
     static long idUpdate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +67,10 @@ public class CronogramaEditar extends AppCompatActivity {
 
 
     private void init() {
-        imageButtonAdd = (ImageButton) findViewById(R.id.imageButtonAddU);
-        editTextAbout = (EditText) findViewById(R.id.editTextAboutU);
-        buttonDate = (Button) findViewById(R.id.buttonDateU);
-        buttonTime = (Button) findViewById(R.id.buttonTimeU);
+        imageButtonAdd = findViewById(R.id.imageButtonAddU);
+        editTextAbout = findViewById(R.id.editTextAboutU);
+        buttonDate = findViewById(R.id.buttonDateU);
+        buttonTime = findViewById(R.id.buttonTimeU);
     }
 
 

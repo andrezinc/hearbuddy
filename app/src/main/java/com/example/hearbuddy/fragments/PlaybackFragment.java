@@ -22,6 +22,7 @@ import com.example.hearbuddy.model.AudioModel;
 import com.melnykov.fab.FloatingActionButton;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class PlaybackFragment extends DialogFragment{
@@ -31,7 +32,7 @@ public class PlaybackFragment extends DialogFragment{
     private static final String ARG_ITEM = "recording_item";
     private AudioModel item;
 
-    private Handler mHandler = new Handler();
+    private final Handler mHandler = new Handler();
 
     private MediaPlayer mMediaPlayer = null;
 
@@ -42,8 +43,8 @@ public class PlaybackFragment extends DialogFragment{
 
     private boolean isPlaying = false;
 
-    long minutes = 0;
-    long seconds = 0;
+    private long minutes = 0;
+    private long seconds = 0;
 
     public PlaybackFragment newInstance(AudioModel item) {
         PlaybackFragment f = new PlaybackFragment();
@@ -57,9 +58,9 @@ public class PlaybackFragment extends DialogFragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        item = getArguments().getParcelable(ARG_ITEM);
+        item = Objects.requireNonNull(getArguments()).getParcelable(ARG_ITEM);
 
-        long itemDuration = item.getLength();
+        long itemDuration = Objects.requireNonNull(item).getLength();
         minutes = TimeUnit.MILLISECONDS.toMinutes(itemDuration);
         seconds = TimeUnit.MILLISECONDS.toSeconds(itemDuration)
                 - TimeUnit.MINUTES.toSeconds(minutes);
@@ -77,13 +78,13 @@ public class PlaybackFragment extends DialogFragment{
         Dialog dialog = super.onCreateDialog(savedInstanceState);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_media_playback, null);
+        View view = Objects.requireNonNull(getActivity()).getLayoutInflater().inflate(R.layout.fragment_media_playback, null);
 
-        TextView mFileNameTextView = (TextView) view.findViewById(R.id.file_name_text_view);
-        mFileLengthTextView = (TextView) view.findViewById(R.id.file_length_text_view);
-        mCurrentProgressTextView = (TextView) view.findViewById(R.id.current_progress_text_view);
+        TextView mFileNameTextView = view.findViewById(R.id.file_name_text_view);
+        mFileLengthTextView = view.findViewById(R.id.file_length_text_view);
+        mCurrentProgressTextView = view.findViewById(R.id.current_progress_text_view);
 
-        mSeekBar = (SeekBar) view.findViewById(R.id.seekbar);
+        mSeekBar = view.findViewById(R.id.seekbar);
         ColorFilter filter = new LightingColorFilter
                 (getResources().getColor(R.color.colorPrimaryDark), getResources().getColor(R.color.colorPrimary));
         mSeekBar.getProgressDrawable().setColorFilter(filter);
@@ -131,7 +132,7 @@ public class PlaybackFragment extends DialogFragment{
             }
         });
 
-        mPlayButton = (FloatingActionButton) view.findViewById(R.id.fab_play);
+        mPlayButton = view.findViewById(R.id.fab_play);
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,7 +146,7 @@ public class PlaybackFragment extends DialogFragment{
 
         builder.setView(view);
 
-        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        Objects.requireNonNull(dialog.getWindow()).requestFeature(Window.FEATURE_NO_TITLE);
 
         return builder.create();
 }
@@ -155,7 +156,7 @@ public class PlaybackFragment extends DialogFragment{
         super.onStart();
 
         Window window = getDialog().getWindow();
-        window.setBackgroundDrawableResource(android.R.color.transparent);
+        Objects.requireNonNull(window).setBackgroundDrawableResource(android.R.color.transparent);
 
         AlertDialog alertDialog = (AlertDialog) getDialog();
         alertDialog.getButton(Dialog.BUTTON_POSITIVE).setEnabled(false);
@@ -222,7 +223,7 @@ public class PlaybackFragment extends DialogFragment{
 
         updateSeekBar();
 
-        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        Objects.requireNonNull(getActivity()).getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     private void prepareMediaPlayerFromPoint(int progress) {
@@ -246,7 +247,7 @@ public class PlaybackFragment extends DialogFragment{
             Log.e(LOG_TAG, "falhou");
         }
 
-        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        Objects.requireNonNull(getActivity()).getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     private void pausePlaying() {
@@ -276,10 +277,10 @@ public class PlaybackFragment extends DialogFragment{
         mCurrentProgressTextView.setText(mFileLengthTextView.getText());
         mSeekBar.setProgress(mSeekBar.getMax());
 
-        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        Objects.requireNonNull(getActivity()).getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
-    private Runnable mRunnable = new Runnable() {
+    private final Runnable mRunnable = new Runnable() {
         @Override
         public void run() {
             if(mMediaPlayer != null){

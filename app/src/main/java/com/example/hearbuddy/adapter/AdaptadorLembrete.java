@@ -21,10 +21,10 @@ import java.util.ArrayList;
 
 public class AdaptadorLembrete extends ArrayAdapter {
 
-    private int layoutRes;
-    private ArrayList<CronogramaModel> arrayList;
+    private final int layoutRes;
+    private final ArrayList<CronogramaModel> arrayList;
 
-    private LayoutInflater inflater;
+    private final LayoutInflater inflater;
 
     public AdaptadorLembrete(@NonNull Context context, @LayoutRes int resource, @NonNull ArrayList<CronogramaModel> arrayList) {
         super(context, resource, arrayList);
@@ -40,10 +40,10 @@ public class AdaptadorLembrete extends ArrayAdapter {
 
         View view=inflater.inflate(layoutRes,null);
 
-        TextView date= (TextView) view.findViewById(R.id.textViewDate);
-        TextView time= (TextView) view.findViewById(R.id.textViewTime);
-        TextView name= (TextView) view.findViewById(R.id.textViewName);
-        TextView alpha= (TextView) view.findViewById(R.id.textViewAlpha);
+        TextView date= view.findViewById(R.id.textViewDate);
+        TextView time= view.findViewById(R.id.textViewTime);
+        TextView name= view.findViewById(R.id.textViewName);
+        TextView alpha= view.findViewById(R.id.textViewAlpha);
 
 
         CronogramaModel cronogramaModel =arrayList.get(position);

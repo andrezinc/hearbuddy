@@ -15,7 +15,7 @@ import java.util.List;
 
 public class AdaptadorDocumento extends RecyclerView.Adapter<AdaptadorDocumento.MyViewHolder> {
 
-    private List<DocumentoModel> listaDocumentos;
+    private final List<DocumentoModel> listaDocumentos;
 
     public AdaptadorDocumento(List<DocumentoModel> listaDocumento) {
         this.listaDocumentos = listaDocumento;
@@ -43,8 +43,8 @@ public class AdaptadorDocumento extends RecyclerView.Adapter<AdaptadorDocumento.
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textDocumento;
-        public MyViewHolder(@NonNull View itemView) {
+        final TextView textDocumento;
+        MyViewHolder(@NonNull View itemView) {
 
             super(itemView);
             textDocumento = itemView.findViewById(R.id.textViewDocumento);

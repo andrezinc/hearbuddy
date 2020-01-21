@@ -12,9 +12,9 @@ import com.example.hearbuddy.model.AudioModel;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-    public static int version = 15;
-    public static String name = "dbHearbuddy";
-    private Context mContext;
+    private static final int version = 15;
+    private static final String name = "dbHearbuddy";
+    // --Commented out by Inspection (21/01/2020 14:51):private Context mContext;
     private static com.example.hearbuddy.helper.listeners.OnDatabaseChangedListener mOnDatabaseChangedListener;
 
     private static final String TEXT_TYPE = " TEXT";
@@ -22,14 +22,14 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String COMMA_SEP = ",";
 
 
-    public static String TABLE_NAME = "tbCronograma";
-    public static String ID = "idCronograma";
-    public static String TODO = "todo";
-    public static String DATE = "date";
-    public static String TIME = "time";
-    public static String DISCIPLINA = "idCronogramaxDisciplina";
+    private static final String TABLE_NAME = "tbCronograma";
+    public static final String ID = "idCronograma";
+    public static final String TODO = "todo";
+    public static final String DATE = "date";
+    public static final String TIME = "time";
+    public static final String DISCIPLINA = "idCronogramaxDisciplina";
 
-    public static String createQueryCronograma="CREATE TABLE tbCronograma (\n" +
+    private static final String createQueryCronograma="CREATE TABLE tbCronograma (\n" +
             "    idCronograma INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "    todo TEXT, " +
             "    date TEXT, " +
@@ -44,14 +44,14 @@ public class DbHelper extends SQLiteOpenHelper {
         super(context, name, null, version);
     }
 
-    public static abstract class DBHelperItem implements BaseColumns {
-        public static final String TABLE_NAME = "tbAudio";
-        public static final String COLUMN_NAME_ID = "idAudio";
-        public static final String COLUMN_NAME_RECORDING_NAME = "recording_name";
-        public static final String COLUMN_NAME_RECORDING_FILE_PATH = "file_path";
-        public static final String COLUMN_NAME_RECORDING_LENGTH = "length";
-        public static final String COLUMN_NAME_TIME_ADDED = "time_added";
-        public static final String COLUMN_NAME_DISCIPLINA = "idAudioxDisciplina";
+    static abstract class DBHelperItem implements BaseColumns {
+        static final String TABLE_NAME = "tbAudio";
+        static final String COLUMN_NAME_ID = "idAudio";
+        static final String COLUMN_NAME_RECORDING_NAME = "recording_name";
+        static final String COLUMN_NAME_RECORDING_FILE_PATH = "file_path";
+        static final String COLUMN_NAME_RECORDING_LENGTH = "length";
+        static final String COLUMN_NAME_TIME_ADDED = "time_added";
+        static final String COLUMN_NAME_DISCIPLINA = "idAudioxDisciplina";
         private static final String EXTERNAL = " FOREIGN KEY (idAudioxDisciplina) REFERENCES tbDisciplina(idDisciplina)";
 
     }
@@ -155,13 +155,15 @@ public class DbHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public Context getContext() {
-        return mContext;
-    }
+// --Commented out by Inspection START (21/01/2020 14:51):
+//    public Context getContext() {
+//        return mContext;
+//    }
+// --Commented out by Inspection STOP (21/01/2020 14:51)
 
 
 
-    public long addRecording(String recordingName, String filePath, long length) {
+    public void addRecording(String recordingName, String filePath, long length) {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -176,7 +178,6 @@ public class DbHelper extends SQLiteOpenHelper {
             mOnDatabaseChangedListener.onNewDatabaseEntryAdded();
         }
 
-        return rowId;
     }
 
     public void renameItem(AudioModel item, String recordingName, String filePath) {

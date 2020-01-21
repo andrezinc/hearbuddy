@@ -32,26 +32,30 @@ import com.example.hearbuddy.model.DisciplinaModel;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Objects;
 
 
 public class CronogramaDisciplina extends AppCompatActivity {
 
-    public static boolean playing=false;
-    Button buttonStop;
-    TextView textViewBack;
-    Button buttonDate, buttonTime;
-    EditText editTextAbout;
-    ImageButton imageButtonAdd;
-    ListView listView;
-    String timeET,dateET,todoET;
-    Long disciplinaET;
-    AdaptadorLembrete arrayAdapter;
-    ArrayList<CronogramaModel> arrayListRem= new ArrayList<>();
-    ArrayList<Integer> idArrayList= new ArrayList<>();
-    AlarmManager alarmManager;
-    DisciplinaModel disciplinaRecebida;
-    boolean flagDeleteAlarm = false;
-    boolean flagEditAlarm = false;
+    private static boolean playing=false;
+    private Button buttonStop;
+    private TextView textViewBack;
+    private Button buttonDate;
+    private Button buttonTime;
+    private EditText editTextAbout;
+    private ImageButton imageButtonAdd;
+    private ListView listView;
+    private String timeET;
+    private String dateET;
+    private String todoET;
+    private Long disciplinaET;
+    private AdaptadorLembrete arrayAdapter;
+    private final ArrayList<CronogramaModel> arrayListRem= new ArrayList<>();
+    private final ArrayList<Integer> idArrayList= new ArrayList<>();
+    private AlarmManager alarmManager;
+    private DisciplinaModel disciplinaRecebida;
+    private boolean flagDeleteAlarm = false;
+    private boolean flagEditAlarm = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,13 +77,13 @@ public class CronogramaDisciplina extends AppCompatActivity {
     }
 
     private void init() {
-        listView = (ListView) findViewById(R.id.listView);
-        imageButtonAdd = (ImageButton) findViewById(R.id.imageButtonAdd);
-        editTextAbout = (EditText) findViewById(R.id.editTextAbout);
-        buttonDate = (Button) findViewById(R.id.buttonDate);
-        buttonTime = (Button) findViewById(R.id.buttonTime);
-        textViewBack = (TextView) findViewById(R.id.textViewBack);
-        buttonStop = (Button) findViewById(R.id.buttonStop);
+        listView = findViewById(R.id.listView);
+        imageButtonAdd = findViewById(R.id.imageButtonAdd);
+        editTextAbout = findViewById(R.id.editTextAbout);
+        buttonDate = findViewById(R.id.buttonDate);
+        buttonTime = findViewById(R.id.buttonTime);
+        textViewBack = findViewById(R.id.textViewBack);
+        buttonStop = findViewById(R.id.buttonStop);
         buttonStop.setVisibility(View.INVISIBLE);
         textViewBack.setVisibility(View.INVISIBLE);
     }
@@ -134,12 +138,12 @@ public class CronogramaDisciplina extends AppCompatActivity {
         SQLiteDatabase db = helper.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
-        cv.put(helper.TODO, todoET);
-        cv.put(helper.DATE, dateET);
-        cv.put(helper.TIME, timeET);
-        cv.put(helper.DISCIPLINA, disciplinaRecebida.getId());
+        cv.put(DbHelper.TODO, todoET);
+        cv.put(DbHelper.DATE, dateET);
+        cv.put(DbHelper.TIME, timeET);
+        cv.put(DbHelper.DISCIPLINA, disciplinaRecebida.getId());
 
-        long id = helper.insert(db, cv);
+        long id = DbHelper.insert(db, cv);
         if (id>0) {
             Toast.makeText(CronogramaDisciplina.this, "Lembrete adicionado", Toast.LENGTH_SHORT).show();
         }
@@ -158,9 +162,9 @@ public class CronogramaDisciplina extends AppCompatActivity {
         DbHelper helper = new DbHelper(this);
         SQLiteDatabase db = helper.getReadableDatabase();
         String selection = DbHelper.ID +" = '"+id+"'";
-        Cursor cursor = helper.select(db,selection);
-        String dateET[]=new String[3];
-        String timeET[]=new String[2];
+        Cursor cursor = DbHelper.select(db,selection);
+        String[] dateET = new String[3];
+        String[] timeET = new String[2];
         String date = null,time=null,name = null;
 
         if(cursor!=null) {
@@ -183,17 +187,17 @@ public class CronogramaDisciplina extends AppCompatActivity {
 
         PendingIntent pendingIntent= PendingIntent.getBroadcast(this,(int)id,i,0);
 
-        if(flagDeleteAlarm==true) {
+        if(flagDeleteAlarm) {
             alarmManager.cancel(pendingIntent);
             flagDeleteAlarm=false;
         }
         else {
             int k=0;
-            for(String s: date.split("-")) {
+            for(String s: Objects.requireNonNull(date).split("-")) {
                 dateET[k++]=s;
             }
             k=0;
-            for(String s: time.split(":")) {
+            for(String s: Objects.requireNonNull(time).split(":")) {
                 timeET[k++]=s;
             }
             Calendar calendar = Calendar.getInstance();
@@ -312,7 +316,7 @@ public class CronogramaDisciplina extends AppCompatActivity {
         dialog.show();
 
     }
-    public void showDelDialog(final int position) {
+    private void showDelDialog(final int position) {
         AlertDialog.Builder builder= new AlertDialog.Builder(CronogramaDisciplina.this);
         builder.setTitle("Confirmação");
         builder.setMessage("Deseja apagar esta data?");
@@ -351,7 +355,7 @@ public class CronogramaDisciplina extends AppCompatActivity {
 
 
     private void stopAlarm() {
-        if(playing==true) {
+        if(playing) {
             textViewBack.setVisibility(View.VISIBLE);
             buttonStop.setVisibility(View.VISIBLE);
             buttonStop.setOnClickListener(new View.OnClickListener() {
@@ -368,7 +372,7 @@ public class CronogramaDisciplina extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(flagEditAlarm==true) {
+        if(flagEditAlarm) {
             fetchDatabaseToArrayList();
             long id= CronogramaEditar.idUpdate;
             setAlarm(id);

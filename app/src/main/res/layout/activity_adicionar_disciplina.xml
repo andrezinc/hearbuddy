@@ -23,7 +23,7 @@
             android:id="@+id/nomeDisciplinaTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Digite o nome da disciplina"
+            android:hint="@string/digite_o_nome_da_disciplina"
             android:textColor="#caba54"
             android:textColorHint="#caba54" />
     </com.google.android.material.textfield.TextInputLayout>

@@ -40,6 +40,7 @@
         app:layout_anchorGravity="start|bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/fuck_icon_arquivo" />
+        app:srcCompat="@drawable/fuck_icon_arquivo"
+        android:contentDescription="TODO" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

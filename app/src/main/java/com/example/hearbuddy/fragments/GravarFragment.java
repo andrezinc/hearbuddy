@@ -24,12 +24,12 @@ import com.example.hearbuddy.model.DisciplinaModel;
 import com.melnykov.fab.FloatingActionButton;
 
 import java.io.File;
+import java.util.Objects;
 
 public class GravarFragment extends Fragment {
     private static final String ARG_POSITION = "position";
-    private static final String LOG_TAG = GravarFragment.class.getSimpleName();
 
-    private  DisciplinaModel disciplinaAtual;
+    DisciplinaModel disciplinaAtual;
 
     private FloatingActionButton mRecordButton = null;
     private Button mPauseButton = null;
@@ -41,7 +41,7 @@ public class GravarFragment extends Fragment {
     private boolean mPauseRecording = true;
 
     private Chronometer mChronometer = null;
-    long timeWhenPaused = 0;
+    private long timeWhenPaused = 0;
 
 
 
@@ -61,16 +61,16 @@ public class GravarFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int position = getArguments().getInt(ARG_POSITION);
+        int position = Objects.requireNonNull(getArguments()).getInt(ARG_POSITION);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View recordView = inflater.inflate(R.layout.fragment_record, container, false);
-        mChronometer = (Chronometer) recordView.findViewById(R.id.chronometer);
-        mRecordingPrompt = (TextView) recordView.findViewById(R.id.recording_status_text);
-        mRecordButton = (FloatingActionButton) recordView.findViewById(R.id.btnRecord);
+        mChronometer = recordView.findViewById(R.id.chronometer);
+        mRecordingPrompt = recordView.findViewById(R.id.recording_status_text);
+        mRecordButton = recordView.findViewById(R.id.btnRecord);
         mRecordButton.setColorNormal(getResources().getColor(R.color.colorPrimary));
         mRecordButton.setColorPressed(getResources().getColor(R.color.colorPrimaryDark));
         mRecordButton.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +78,7 @@ public class GravarFragment extends Fragment {
             public void onClick(View v) {
 
 
-                if (ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.RECORD_AUDIO)!= PackageManager.PERMISSION_GRANTED &&
+                if (ActivityCompat.checkSelfPermission(Objects.requireNonNull(getActivity()), android.Manifest.permission.RECORD_AUDIO)!= PackageManager.PERMISSION_GRANTED &&
                         ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
                 {
                     String [] permissions={android.Manifest.permission.RECORD_AUDIO,android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -90,7 +90,7 @@ public class GravarFragment extends Fragment {
             }
         });
 
-        mPauseButton = (Button) recordView.findViewById(R.id.btnPause);
+        mPauseButton = recordView.findViewById(R.id.btnPause);
         mPauseButton.setVisibility(View.GONE); //hide pause button before recording starts
         mPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,14 +107,13 @@ public class GravarFragment extends Fragment {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case  2000:
-                if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                    onRecord(mStartRecording);
-                    mStartRecording = !mStartRecording;
-                }else {
-                    Toast.makeText(getActivity(), "Autorizar gravação de áudio", Toast.LENGTH_SHORT).show();
-                }
+        if (requestCode == 2000) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                onRecord(mStartRecording);
+                mStartRecording = !mStartRecording;
+            } else {
+                Toast.makeText(getActivity(), "Autorizar gravação de áudio", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -152,7 +151,7 @@ public class GravarFragment extends Fragment {
                 }
             });
 
-            getActivity().startService(intent);
+            Objects.requireNonNull(getActivity()).startService(intent);
             getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
             mRecordingPrompt.setText(getString(R.string.record_in_progress) + ".");
@@ -164,7 +163,7 @@ public class GravarFragment extends Fragment {
             mChronometer.setBase(SystemClock.elapsedRealtime());
             timeWhenPaused = 0;
             mRecordingPrompt.setText(getString(R.string.record_prompt));
-            getActivity().stopService(intent);
+            Objects.requireNonNull(getActivity()).stopService(intent);
             getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
     }
@@ -174,13 +173,13 @@ public class GravarFragment extends Fragment {
         if (pause) {
             mPauseButton.setCompoundDrawablesWithIntrinsicBounds
                     (R.drawable.ic_media_play ,0 ,0 ,0);
-            mRecordingPrompt.setText((String)getString(R.string.resume_recording_button).toUpperCase());
+            mRecordingPrompt.setText(getString(R.string.resume_recording_button).toUpperCase());
             timeWhenPaused = mChronometer.getBase() - SystemClock.elapsedRealtime();
             mChronometer.stop();
         } else {
             mPauseButton.setCompoundDrawablesWithIntrinsicBounds
                     (R.drawable.ic_media_pause ,0 ,0 ,0);
-            mRecordingPrompt.setText((String)getString(R.string.pause_recording_button).toUpperCase());
+            mRecordingPrompt.setText(getString(R.string.pause_recording_button).toUpperCase());
             mChronometer.setBase(SystemClock.elapsedRealtime() + timeWhenPaused);
             mChronometer.start();
         }

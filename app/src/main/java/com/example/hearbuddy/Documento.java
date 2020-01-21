@@ -71,7 +71,7 @@ public class Documento extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentTelaDisciplina = getIntent();
                 Intent intent = new Intent(getApplicationContext(), AdicionarDocumentoActivity.class);
-                intent.putExtra("disciplinaSelecionada", (DisciplinaModel) intentTelaDisciplina.getSerializableExtra("disciplinaSelecionada"));
+                intent.putExtra("disciplinaSelecionada", intentTelaDisciplina.getSerializableExtra("disciplinaSelecionada"));
                 startActivity(intent);
             }
         });
@@ -99,12 +99,12 @@ public class Documento extends AppCompatActivity {
             String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
             Intent intentExternal = new Intent(getApplicationContext(), AdicionarDocumentoActivity.class);
             intentExternal.putExtra("pathExterno", filePath);
-            intentExternal.putExtra("disciplinaSelecionadaExt", (DisciplinaModel) intentTelaDisciplina.getSerializableExtra("disciplinaSelecionada"));
+            intentExternal.putExtra("disciplinaSelecionadaExt", intentTelaDisciplina.getSerializableExtra("disciplinaSelecionada"));
             startActivity(intentExternal);
         }
     }
 
-    public void carregarListaDocumentos(){
+    private void carregarListaDocumentos(){
         Intent intentTelaDisciplina = getIntent();
         DocumentoDAO documentoDAO = new DocumentoDAO(getApplicationContext());
         listaDocumentos = documentoDAO.listarDocumentos((DisciplinaModel) intentTelaDisciplina.getSerializableExtra("disciplinaSelecionada"));
@@ -117,7 +117,7 @@ public class Documento extends AppCompatActivity {
         recyclerViewDocumento.setAdapter(documentoAdapter);
     }
 
-    ItemTouchHelper.SimpleCallback itemTouchHelper = new ItemTouchHelper.SimpleCallback(0,
+    private final ItemTouchHelper.SimpleCallback itemTouchHelper = new ItemTouchHelper.SimpleCallback(0,
             ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {

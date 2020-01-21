@@ -17,7 +17,8 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="15dp"
             android:background="@color/colorPrimary"
-            android:src="@drawable/fuck_icone_adicionar" />
+            android:src="@drawable/fuck_icone_adicionar"
+            android:contentDescription="TODO" />
 
         <EditText
             android:id="@+id/editTextAboutU"
@@ -28,7 +29,9 @@
             android:layout_toLeftOf="@id/imageButtonAddU"
             android:hint=" Entre com o seu lembrete"
             android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary" />
+            android:textColorHint="@color/colorPrimary"
+            android:inputType=""
+            android:autofillHints="" />
     </RelativeLayout>
 
     <LinearLayout

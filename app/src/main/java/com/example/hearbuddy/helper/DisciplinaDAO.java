@@ -12,8 +12,8 @@ import java.util.List;
 
 public class DisciplinaDAO implements IDisciplinaDAO {
 
-    private SQLiteDatabase read;
-    private SQLiteDatabase write;
+    private final SQLiteDatabase read;
+    private final SQLiteDatabase write;
 
     public DisciplinaDAO(Context context) {
         DbHelper db = new DbHelper(context);
@@ -64,6 +64,7 @@ public class DisciplinaDAO implements IDisciplinaDAO {
                 disciplina.setNomeDisciplina(nomeDisciplina);
                 disciplinas.add(disciplina);
             }
+        c.close();
         return disciplinas;
     }
 }

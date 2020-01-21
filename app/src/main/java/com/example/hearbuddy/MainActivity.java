@@ -16,11 +16,11 @@ import androidx.core.app.ActivityCompat;
 import com.example.hearbuddy.model.DisciplinaModel;
 
 public class MainActivity extends AppCompatActivity {
-    ImageButton btdisc;
-    ImageButton btcronoH;
-    ImageButton btaudio;
+    private ImageButton btdisc;
+    private ImageButton btcronoH;
+    private ImageButton btaudio;
 
-    public static final int RECORD_AUDIO = 0;
+    private static final int RECORD_AUDIO = 0;
 
 
     @Override
@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        btdisc = (ImageButton) findViewById(R.id.btdisc);
-        btcronoH = (ImageButton) findViewById(R.id.btcronoH);
-        btaudio =  (ImageButton) findViewById(R.id.btaudio2);
+        btdisc = findViewById(R.id.btdisc);
+        btcronoH = findViewById(R.id.btcronoH);
+        btaudio = findViewById(R.id.btaudio2);
 
 
 
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             private void btaudioc() {
                 Intent intentAudio = getIntent();
                 Intent intent = new Intent(MainActivity.this, GravadorAudio.class);
-                intent.putExtra("disciplinaSelecionada", (DisciplinaModel) intentAudio.getSerializableExtra("disciplinaSelecionada"));
+                intent.putExtra("disciplinaSelecionada", intentAudio.getSerializableExtra("disciplinaSelecionada"));
                 startActivity(intent);
 
             }

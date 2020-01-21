@@ -38,17 +38,17 @@ public class RecordingService extends Service {
     private DisciplinaModel disciplinaAssociada;
     private long mStartingTimeMillis = 0;
     private int mElapsedSeconds = 0;
-    private OnTimerChangedListener onTimerChangedListener = null;
+    private final OnTimerChangedListener onTimerChangedListener = null;
     private static final SimpleDateFormat mTimerFormat = new SimpleDateFormat("mm:ss", Locale.getDefault());
 
     private TimerTask mIncrementTimerTask = null;
 
     @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
+  public IBinder onBind(Intent intent) {
+       return null;
+   }
 
-    public interface OnTimerChangedListener {
+  public interface OnTimerChangedListener {
         void onTimerChanged(int seconds);
     }
 
@@ -58,8 +58,8 @@ public class RecordingService extends Service {
         mDatabase = new DbHelper(getApplicationContext());
         Intent intent = new Intent();
         Bundle bundle = intent.getExtras();
-//        disciplinaAssociada = (DisciplinaModel) bundle.getSerializable("disciplinaSelecionada");
-      //  Log.i("DabberService", disciplinaAssociada.getNomeDisciplina());
+       disciplinaAssociada = (DisciplinaModel) bundle.getSerializable("disciplinaSelecionada");
+       Log.i("DabberService", disciplinaAssociada.getNomeDisciplina());
 
     }
 
@@ -79,7 +79,7 @@ public class RecordingService extends Service {
         super.onDestroy();
     }
 
-    public void startRecording() {
+    private void startRecording() {
         setFileNameAndPath();
 
         mRecorder = new MediaRecorder();
@@ -102,7 +102,7 @@ public class RecordingService extends Service {
         }
     }
 
-    public void setFileNameAndPath(){
+    private void setFileNameAndPath(){
         int count = 0;
         File f;
 
@@ -118,13 +118,12 @@ public class RecordingService extends Service {
         }while (f.exists() && !f.isDirectory());
     }
 
-    public void stopRecording() {
+    private void stopRecording() {
         mRecorder.stop();
         long mElapsedMillis = (System.currentTimeMillis() - mStartingTimeMillis);
         mRecorder.release();
         Toast.makeText(this, getString(R.string.toast_recording_finish) + " " + mFilePath, Toast.LENGTH_LONG).show();
 
-        //remove notification
         if (mIncrementTimerTask != null) {
             mIncrementTimerTask.cancel();
             mIncrementTimerTask = null;
@@ -133,23 +132,23 @@ public class RecordingService extends Service {
         mRecorder = null;
 
         try {
-//            Log.i("DabberServiceAdicionar", disciplinaAssociada.getNomeDisciplina());
-            mDatabase.addRecording(mFileName,mFilePath, mElapsedMillis);
+           Log.i("DabberServiceAdicionar", disciplinaAssociada.getNomeDisciplina());
+           mDatabase.addRecording(mFileName,mFilePath, mElapsedMillis);
 
-        } catch (Exception e){
-            Log.e(LOG_TAG, "exception", e);
-        }
+      } catch (Exception e){
+           Log.e(LOG_TAG, "exception", e);
+      }
     }
 
-    private void startTimer() {
-        Timer mTimer = new Timer();
-        mIncrementTimerTask = new TimerTask() {
-            @Override
-            public void run() {
-                mElapsedSeconds++;
-                if (onTimerChangedListener != null)
+   private void startTimer() {
+       Timer mTimer = new Timer();
+       mIncrementTimerTask = new TimerTask() {
+           @Override
+           public void run() {
+              mElapsedSeconds++;
+               if (onTimerChangedListener != null)
                     onTimerChangedListener.onTimerChanged(mElapsedSeconds);
-                NotificationManager mgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+               NotificationManager mgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 mgr.notify(1, createNotification());
             }
         };
