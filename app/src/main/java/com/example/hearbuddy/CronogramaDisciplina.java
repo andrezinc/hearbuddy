@@ -50,10 +50,8 @@ public class CronogramaDisciplina extends AppCompatActivity {
     ArrayList<Integer> idArrayList= new ArrayList<>();
     AlarmManager alarmManager;
     DisciplinaModel disciplinaRecebida;
-    //To delete and edit alarm
     boolean flagDeleteAlarm = false;
     boolean flagEditAlarm = false;
-    //public static Activity fa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +61,6 @@ public class CronogramaDisciplina extends AppCompatActivity {
         disciplinaRecebida = (DisciplinaModel) getIntent().getSerializableExtra("disciplinaSelecionada");
 
 
-        //fa=this;
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         init();
@@ -144,7 +141,7 @@ public class CronogramaDisciplina extends AppCompatActivity {
 
         long id = helper.insert(db, cv);
         if (id>0) {
-            //Toast.makeText(MainActivity.this, "Reminder Set", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CronogramaDisciplina.this, "Lembrete adicionado", Toast.LENGTH_SHORT).show();
         }
         else {
             Toast.makeText(CronogramaDisciplina.this, "Tente novamente", Toast.LENGTH_SHORT).show();
@@ -199,7 +196,6 @@ public class CronogramaDisciplina extends AppCompatActivity {
             for(String s: time.split(":")) {
                 timeET[k++]=s;
             }
-            //Log.d("1234", ""+dateET[2]+" "+dateET[1]+" "+dateET[0]+" "+timeET[1]+" "+timeET[0]);
             Calendar calendar = Calendar.getInstance();
             calendar.set(Integer.parseInt(dateET[2]),Integer.parseInt(dateET[1])-1,Integer.parseInt(dateET[0]),Integer.parseInt(timeET[0]),Integer.parseInt(timeET[1]));
             long mili = calendar.getTimeInMillis();
@@ -319,7 +315,7 @@ public class CronogramaDisciplina extends AppCompatActivity {
     public void showDelDialog(final int position) {
         AlertDialog.Builder builder= new AlertDialog.Builder(CronogramaDisciplina.this);
         builder.setTitle("Confirmação");
-        builder.setMessage("Deseja deletar?");
+        builder.setMessage("Deseja apagar esta data?");
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -330,17 +326,16 @@ public class CronogramaDisciplina extends AppCompatActivity {
 
                 int flag = DbHelper.delete(db, whereCluase);
                 if (flag > 0) {
-                    Toast.makeText(CronogramaDisciplina.this, "Deletado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CronogramaDisciplina.this, "Apagado", Toast.LENGTH_SHORT).show();
                     arrayListRem.clear();
                     idArrayList.clear();
                     fetchDatabaseToArrayList();
                     arrayAdapter.notifyDataSetChanged();
                     flagDeleteAlarm = true;
-                    //TO DELETE ALARM
                     setAlarm(id);
                 }
                 else {
-                    Toast.makeText(CronogramaDisciplina.this, "Não foi possível deletar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CronogramaDisciplina.this, "Não foi possível apagar", Toast.LENGTH_SHORT).show();
                 }
             }
         });

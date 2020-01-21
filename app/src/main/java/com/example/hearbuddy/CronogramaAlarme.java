@@ -22,8 +22,9 @@ public class CronogramaAlarme extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String name=intent.getStringExtra("TODO");
-/*        String date=intent.getStringExtra("DATE");
-        String time=intent.getStringExtra("TIME");*/
+        String date=intent.getStringExtra("DATE");
+        String time=intent.getStringExtra("TIME");
+
         long id=intent.getLongExtra("ID",0);
         Intent i = new Intent(context, CronogramaDisciplina.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
