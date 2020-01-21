@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NuvemDeCaralhas"></activity>
+        <activity android:name=".NuvemDePalavras"></activity>
         <activity android:name=".AdicionarDocumentoActivity" />
         <activity android:name=".AdicionarDisciplinaActivity" />
         <activity android:name=".CronogramaEditar" />

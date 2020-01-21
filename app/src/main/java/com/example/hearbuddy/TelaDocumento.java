@@ -94,7 +94,7 @@ public class TelaDocumento extends AppCompatActivity {
         btCriarNuvem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TelaDocumento.this, NuvemDeCaralhas.class);
+                Intent intent = new Intent(TelaDocumento.this, NuvemDePalavras.class);
                 intent.putExtra("textoNuvem", textoDaNuvem);
                 startActivity(intent);
             }

@@ -13,12 +13,12 @@ import com.mordred.wordcloud.WordCloud;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NuvemDeCaralhas extends AppCompatActivity {
+public class NuvemDePalavras extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nuvem_de_caralhas);
+        setContentView(R.layout.activity_nuvem_de_palavras);
         ImageView imgView = findViewById(R.id.imageView);
 
 
