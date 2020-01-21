@@ -10,9 +10,6 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.hearbuddy.R;
 
-/**
- * Created by Daniel on 1/3/2015.
- */
 public class OpcaoFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

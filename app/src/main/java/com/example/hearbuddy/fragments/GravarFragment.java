@@ -25,21 +25,12 @@ import com.melnykov.fab.FloatingActionButton;
 
 import java.io.File;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * to handle interaction events.
- * Use the {@link GravarFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class GravarFragment extends Fragment {
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_POSITION = "position";
     private static final String LOG_TAG = GravarFragment.class.getSimpleName();
 
     private  DisciplinaModel disciplinaAtual;
 
-    //Recording controls
     private FloatingActionButton mRecordButton = null;
     private Button mPauseButton = null;
 
@@ -50,14 +41,9 @@ public class GravarFragment extends Fragment {
     private boolean mPauseRecording = true;
 
     private Chronometer mChronometer = null;
-    long timeWhenPaused = 0; //stores time when user clicks pause button
+    long timeWhenPaused = 0;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment Record_Fragment.
-     */
+
 
     public static GravarFragment newInstance(int position, DisciplinaModel disciplinaAtual) {
         GravarFragment f = new GravarFragment();
@@ -65,8 +51,6 @@ public class GravarFragment extends Fragment {
         b.putInt(ARG_POSITION, position);
         b.putSerializable("disciplinaAtual", disciplinaAtual);
         f.setArguments(b);
-//        Log.i("DabberFragment", disciplinaAtual.getNomeDisciplina());
-
         return f;
     }
 
@@ -84,15 +68,8 @@ public class GravarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View recordView = inflater.inflate(R.layout.fragment_record, container, false);
-
-      //  disciplinaAtual = (DisciplinaModel) getArguments().getSerializable(
-         //       "disciplinaAtual");
-//        Log.i("DabberFragment", disciplinaAtual.getNomeDisciplina());
-
         mChronometer = (Chronometer) recordView.findViewById(R.id.chronometer);
-        //update recording prompt text
         mRecordingPrompt = (TextView) recordView.findViewById(R.id.recording_status_text);
-
         mRecordButton = (FloatingActionButton) recordView.findViewById(R.id.btnRecord);
         mRecordButton.setColorNormal(getResources().getColor(R.color.colorPrimary));
         mRecordButton.setColorPressed(getResources().getColor(R.color.colorPrimaryDark));
@@ -141,7 +118,6 @@ public class GravarFragment extends Fragment {
         }
     }
 
-    // Recording Start/Stop
     //TODO: recording pause
     private void onRecord(boolean start){
 
@@ -151,17 +127,13 @@ public class GravarFragment extends Fragment {
         intent.putExtras(b);
 
         if (start) {
-            // start recording
             mRecordButton.setImageResource(R.drawable.ic_media_stop);
-            //mPauseButton.setVisibility(View.VISIBLE);
             Toast.makeText(getActivity(),R.string.toast_recording_start,Toast.LENGTH_SHORT).show();
             File folder = new File(Environment.getExternalStorageDirectory() + "/SoundRecorder");
             if (!folder.exists()) {
-                //folder /SoundRecorder doesn't exist, create the folder
                 folder.mkdir();
             }
 
-            //start Chronometer
             mChronometer.setBase(SystemClock.elapsedRealtime());
             mChronometer.start();
             mChronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
@@ -180,25 +152,19 @@ public class GravarFragment extends Fragment {
                 }
             });
 
-            //start RecordingService
             getActivity().startService(intent);
-            //keep screen on while recording
             getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
             mRecordingPrompt.setText(getString(R.string.record_in_progress) + ".");
             mRecordPromptCount++;
 
         } else {
-            //stop recording
             mRecordButton.setImageResource(R.drawable.ic_mic_white_36dp);
-            //mPauseButton.setVisibility(View.GONE);
             mChronometer.stop();
             mChronometer.setBase(SystemClock.elapsedRealtime());
             timeWhenPaused = 0;
             mRecordingPrompt.setText(getString(R.string.record_prompt));
-
             getActivity().stopService(intent);
-            //allow the screen to turn off again once recording is finished
             getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
     }
@@ -206,14 +172,12 @@ public class GravarFragment extends Fragment {
     //TODO: implement pause recording
     private void onPauseRecord(boolean pause) {
         if (pause) {
-            //pause recording
             mPauseButton.setCompoundDrawablesWithIntrinsicBounds
                     (R.drawable.ic_media_play ,0 ,0 ,0);
             mRecordingPrompt.setText((String)getString(R.string.resume_recording_button).toUpperCase());
             timeWhenPaused = mChronometer.getBase() - SystemClock.elapsedRealtime();
             mChronometer.stop();
         } else {
-            //resume recording
             mPauseButton.setCompoundDrawablesWithIntrinsicBounds
                     (R.drawable.ic_media_pause ,0 ,0 ,0);
             mRecordingPrompt.setText((String)getString(R.string.pause_recording_button).toUpperCase());

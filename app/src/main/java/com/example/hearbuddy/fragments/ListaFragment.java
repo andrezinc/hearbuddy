@@ -53,8 +53,6 @@ public class ListaFragment extends Fragment{
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(RecyclerView.VERTICAL);
 
-
-        //newest to oldest order (database stores from oldest to newest)
         llm.setReverseLayout(true);
         llm.setStackFromEnd(true);
 
@@ -69,21 +67,18 @@ public class ListaFragment extends Fragment{
 
     FileObserver observer =
             new FileObserver(android.os.Environment.getExternalStorageDirectory().toString()
-                    + "/SoundRecorder") {
-                // set up a file observer to watch this directory on sd card
+                    + "/HearbuddyRecord") {
                 @Override
                 public void onEvent(int event, String file) {
                     if(event == FileObserver.DELETE){
-                        // user deletes a recording file out of the app
 
                         String filePath = android.os.Environment.getExternalStorageDirectory().toString()
-                                + "/SoundRecorder" + file + "]";
+                                + "/HearbuddyRecord" + file + "]";
 
-                        Log.d(LOG_TAG, "File deleted ["
+                        Log.d(LOG_TAG, "Arquivo apagado ["
                                 + android.os.Environment.getExternalStorageDirectory().toString()
-                                + "/SoundRecorder" + file + "]");
+                                + "/HearbuddyRecord" + file + "]");
 
-                        // remove file from database and recyclerview
                         mAdaptadorAudio.removeOutOfApp(filePath);
                     }
                 }

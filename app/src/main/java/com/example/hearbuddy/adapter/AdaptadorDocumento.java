@@ -21,8 +21,6 @@ public class AdaptadorDocumento extends RecyclerView.Adapter<AdaptadorDocumento.
         this.listaDocumentos = listaDocumento;
     }
 
-
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

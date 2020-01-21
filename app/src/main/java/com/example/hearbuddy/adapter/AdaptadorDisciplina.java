@@ -22,8 +22,6 @@ public class AdaptadorDisciplina extends RecyclerView.Adapter<AdaptadorDisciplin
 
     }
 
-
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
