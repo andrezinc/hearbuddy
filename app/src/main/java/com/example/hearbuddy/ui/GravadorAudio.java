@@ -1,4 +1,4 @@
-package com.example.hearbuddy;
+package com.example.hearbuddy.ui;
 
 import android.os.Bundle;
 
@@ -10,9 +10,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.astuetz.PagerSlidingTabStrip;
-import com.example.hearbuddy.fragments.GravarFragment;
-import com.example.hearbuddy.fragments.ListaFragment;
-import com.example.hearbuddy.model.DisciplinaModel;
+import com.example.hearbuddy.R;
+import com.example.hearbuddy.fragment.GravarFragment;
+import com.example.hearbuddy.fragment.ListaFragment;
 
 
 public class GravadorAudio extends AppCompatActivity {

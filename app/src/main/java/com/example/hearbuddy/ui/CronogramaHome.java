@@ -1,16 +1,15 @@
-package com.example.hearbuddy;
+package com.example.hearbuddy.ui;
 
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.hearbuddy.R;
 import com.example.hearbuddy.adapter.AdaptadorLembrete;
 import com.example.hearbuddy.helper.DbHelper;
 import com.example.hearbuddy.model.CronogramaModel;

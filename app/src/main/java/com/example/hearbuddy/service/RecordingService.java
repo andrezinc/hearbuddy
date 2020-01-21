@@ -1,4 +1,4 @@
-package com.example.hearbuddy;
+package com.example.hearbuddy.service;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -15,8 +15,10 @@ import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
+import com.example.hearbuddy.R;
 import com.example.hearbuddy.helper.DbHelper;
 import com.example.hearbuddy.model.DisciplinaModel;
+import com.example.hearbuddy.ui.GravadorAudio;
 
 import java.io.File;
 import java.io.IOException;

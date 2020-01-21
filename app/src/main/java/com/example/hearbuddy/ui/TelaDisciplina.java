@@ -1,4 +1,4 @@
-package com.example.hearbuddy;
+package com.example.hearbuddy.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.hearbuddy.model.DisciplinaModel;
+import com.example.hearbuddy.R;
 
 public class TelaDisciplina extends AppCompatActivity {
    private ImageButton btdoc;

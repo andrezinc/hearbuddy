@@ -12,38 +12,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NuvemDePalavras"/>
-        <activity android:name=".AdicionarDocumentoActivity" />
-        <activity android:name=".AdicionarDisciplinaActivity" />
-        <activity android:name=".CronogramaEditar" />
-        <activity android:name=".CronogramaHome" />
-        <activity android:name=".CronogramaDisciplina" />
+        <activity android:name=".ui.NuvemDePalavras"/>
+        <activity android:name=".ui.AdicionarDocumentoActivity" />
+        <activity android:name=".ui.AdicionarDisciplinaActivity" />
+        <activity android:name=".ui.CronogramaEditar" />
+        <activity android:name=".ui.CronogramaHome" />
+        <activity android:name=".ui.CronogramaDisciplina" />
 
-        <receiver android:name=".CronogramaAlarme"
+        <receiver android:name=".ui.CronogramaAlarme"
             android:permission="TODO">
             <intent-filter>
                 <action android:name="i.love.myself" />
             </intent-filter>
         </receiver>
 
-        <activity android:name=".GravadorAudio" />
+        <activity android:name=".ui.GravadorAudio" />
 
-        <service android:name=".RecordingService" />
+        <service android:name=".service.RecordingService" />
 
         <activity
-            android:name=".Documento"
+            android:name=".ui.Documento"
             android:label="@string/title_activity_documento"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Disciplina"
+            android:name=".ui.Disciplina"
             android:label="@string/title_activity_disciplina"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".TelaDocumento"
+            android:name=".ui.TelaDocumento"
             android:label="@string/title_activity_tela_documento"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TelaDisciplina" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.TelaDisciplina" />
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

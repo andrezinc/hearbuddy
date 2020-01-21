@@ -1,4 +1,4 @@
-package com.example.hearbuddy;
+package com.example.hearbuddy.ui;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -6,6 +6,7 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.hearbuddy.R;
 import com.example.hearbuddy.helper.DisciplinaDAO;
 import com.example.hearbuddy.model.DisciplinaModel;
 import com.google.android.material.textfield.TextInputEditText;

@@ -1,4 +1,4 @@
-package com.example.hearbuddy.fragments;
+package com.example.hearbuddy.fragment;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,7 +19,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.hearbuddy.R;
-import com.example.hearbuddy.RecordingService;
+import com.example.hearbuddy.service.RecordingService;
 import com.example.hearbuddy.model.DisciplinaModel;
 import com.melnykov.fab.FloatingActionButton;
 

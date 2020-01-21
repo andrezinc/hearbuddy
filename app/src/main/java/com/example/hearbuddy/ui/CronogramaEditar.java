@@ -1,4 +1,4 @@
-package com.example.hearbuddy;
+package com.example.hearbuddy.ui;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.hearbuddy.R;
 import com.example.hearbuddy.helper.DbHelper;
 
 import java.util.Calendar;

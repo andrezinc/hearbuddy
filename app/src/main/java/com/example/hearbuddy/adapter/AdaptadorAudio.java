@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hearbuddy.R;
-import com.example.hearbuddy.fragments.PlaybackFragment;
+import com.example.hearbuddy.fragment.PlaybackFragment;
 import com.example.hearbuddy.helper.DbHelper;
 import com.example.hearbuddy.helper.listeners.OnDatabaseChangedListener;
 import com.example.hearbuddy.model.AudioModel;

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context="com.example.hearbuddy.fragments.ListaFragment">
+    tools:context="com.example.hearbuddy.fragment.ListaFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

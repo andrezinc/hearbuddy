@@ -7,7 +7,7 @@
     android:background="#141416"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
 
     <ImageButton

@@ -1,4 +1,4 @@
-package com.example.hearbuddy.fragments;
+package com.example.hearbuddy.fragment;
 
 import android.os.Bundle;
 import android.os.FileObserver;

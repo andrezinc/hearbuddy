@@ -1,4 +1,4 @@
-package com.example.hearbuddy;
+package com.example.hearbuddy.ui;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -12,6 +12,8 @@ import android.net.Uri;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
+
+import com.example.hearbuddy.R;
 
 
 public class CronogramaAlarme extends BroadcastReceiver {

@@ -1,4 +1,4 @@
-package com.example.hearbuddy;
+package com.example.hearbuddy.ui;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.hearbuddy.R;
 import com.mordred.wordcloud.WordCloud;
 
 import java.util.HashMap;

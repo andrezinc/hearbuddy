@@ -1,4 +1,4 @@
-package com.example.hearbuddy.fragments;
+package com.example.hearbuddy.fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

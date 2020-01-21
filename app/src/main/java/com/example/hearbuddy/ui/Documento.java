@@ -1,4 +1,4 @@
-package com.example.hearbuddy;
+package com.example.hearbuddy.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hearbuddy.R;
 import com.example.hearbuddy.adapter.AdaptadorDocumento;
 import com.example.hearbuddy.helper.DocumentoDAO;
 import com.example.hearbuddy.helper.RecyclerItemClickListener;

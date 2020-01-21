@@ -1,4 +1,4 @@
-package com.example.hearbuddy;
+package com.example.hearbuddy.ui;
 
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
@@ -25,6 +25,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.hearbuddy.R;
 import com.example.hearbuddy.adapter.AdaptadorLembrete;
 import com.example.hearbuddy.helper.DbHelper;
 import com.example.hearbuddy.model.CronogramaModel;

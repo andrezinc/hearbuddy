@@ -1,4 +1,4 @@
-package com.example.hearbuddy;
+package com.example.hearbuddy.ui;
 
 import android.Manifest;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.example.hearbuddy.model.DisciplinaModel;
+import com.example.hearbuddy.R;
 
 public class MainActivity extends AppCompatActivity {
     private ImageButton btdisc;
