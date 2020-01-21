@@ -5,11 +5,11 @@ import android.os.Parcelable;
 
 
 public class AudioModel implements Parcelable {
-    private String mName; // file name
-    private String mFilePath; //file path
-    private int mId; //id in database
-    private int mLength; // length of recording in seconds
-    private long mTime; // date/time of the recording
+    private String mName;
+    private String mFilePath;
+    private int mId;
+    private int mLength;
+    private long mTime;
     private DisciplinaModel disciplinaAssociada;
     private long idDisciplinaAssociada;
 
@@ -96,7 +96,6 @@ public class AudioModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         idDisciplinaAssociada = disciplinaAssociada.getId();
-
         dest.writeInt(mId);
         dest.writeInt(mLength);
         dest.writeLong(mTime);
